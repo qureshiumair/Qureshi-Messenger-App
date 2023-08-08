@@ -1,0 +1,181 @@
+body {
+    overflow: scroll;
+}
+
+body>iframe {
+    display: none;
+}
+
+.zoom_card {
+    background-color: #CFB430;
+    transition: transform .1s;
+    border-style: outset;
+    border-radius: 20px;
+    margin-right: 2%;
+    width: 31.33%;
+}
+
+.zoom_card:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+
+
+}
+
+.badge {
+
+    float: right;
+    color:black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.footer {
+    border-top: 2px;
+    border-top-color: black;
+    border-top-style: solid;
+
+}
+
+@mixin common_theme_properties{
+    margin-right: 0.2%;
+        cursor: pointer;
+        position: relative;
+        left: -43%;
+}
+
+#day_mode_img {
+        content: url("../static/day_mode.png");
+        @include common_theme_properties();
+    }
+    
+
+#night_mode_img {
+        content: url("../static/night_mode.png");
+        @include common_theme_properties();
+    }
+
+.custom_card_img {
+
+    border-radius: 20px;
+
+}
+
+.news_update_time {
+
+    color: black;
+    position: relative;
+    left: 3%;
+}
+
+.country_select {
+
+    border: none;
+    border-bottom: 2px solid snow;
+    background-color: black;
+    position: relative;
+    left: -26%;
+}
+
+#country_list {
+
+    left: -62%;
+    background-color: black;
+}
+
+.select_option:hover {
+
+    color: #CFB430;
+    cursor: pointer;
+}
+
+.select_option {
+    color: white;
+}
+
+#input_search_query {
+
+    height: 38px;
+    width: 270px;
+    border-style: double;
+    border-color: black;
+    border-radius: 23px;
+
+}
+
+#search_bar {
+
+    position: relative;
+    right: 12px;
+
+}
+
+#search_button {
+    cursor: pointer;
+    height: 41px;
+    position: absolute;
+    right: 4px;
+    width: 35px;
+}
+
+.error_page {
+
+    position: relative;
+    display: block;
+    margin: auto;
+}
+
+#splash_screen {
+    position: relative;
+    top: 134px;
+}
+
+.nav_item {
+
+    color: black;
+    font-weight: 500;
+    border-width: 0 0 2px;
+    outline: 0;
+}
+
+.nav_item_focus {
+    border-style: solid;
+    border-bottom-color: #114FEE;
+    transition: background-color 1s;
+
+
+}
+
+.about_me {
+    border-style: double;
+    width: 35%;
+    position: relative;
+    left: 31%;
+    top: 28px;
+}
+
+.custom_navbar {
+    border-bottom-color: deeppink;
+    border-bottom-style: solid;
+    border-width: 4px;
+    background-color: white;
+    padding: 0px;
+
+}
+
+#progress_bar {
+    background-color: #CF309A;
+
+}
+
+#news_comp_heading {
+    position: "relative";
+    top: "10px";
+    color: black;
+    position: relative;
+    top: 22px;
+}
+
+#splash_screen_img{
+    position: relative;
+    
+}
