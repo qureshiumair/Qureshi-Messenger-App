@@ -2,7 +2,7 @@ import React from "react";
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 import error_page_icon from '../static/error_page.gif';
 
-export default function Error_element() {
+export default function ErrorElement() {
   const error = useRouteError();
   let message = null;
   if (isRouteErrorResponse(error) && error.status == "404"){

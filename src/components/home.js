@@ -4,8 +4,8 @@ import News from "./news";
 import Navbar from "./navbar";
 import LoadingBar from "react-top-loading-bar";
 import { useState, createContext } from "react";
-import Error_element from "./error_element";
-import About_me from "./about_me";
+import ErrorElement from "./error_element";
+import AboutMe from "./about_me";
 
 function usePrefer_country(name) {
   let [curr_name, update_curr_name] = useState(
@@ -42,7 +42,7 @@ export default function Home() {
   let [search_query, set_query] = useState("");
   let [splash_screen, set_splash_screen] = useState(true);
   const api_key = process.env.REACT_APP_NEWS_API_KEY;
-  const homepage = process.env.REACT_APP_NEWS_HOMEPAGE;
+  const homepage_url = process.env.REACT_APP_NEWS_HOMEPAGE;
   const news_category_list = [
     "general",
     "business",
@@ -55,10 +55,10 @@ export default function Home() {
   const router = createBrowserRouter([
     {
       path: "/",
-      errorElement: <Error_element />,
+      errorElement: <ErrorElement />,
     },
     {
-      path: `${homepage}/`,
+      path: `${homepage_url}/`,
       element: (
         <Navbar
           key="navbar_in_home"
@@ -70,7 +70,7 @@ export default function Home() {
           news_category_list={news_category_list}
         />
       ),
-      errorElement: <Error_element />,
+      errorElement: <ErrorElement />,
       children: [
         {
           index: true,
@@ -84,7 +84,7 @@ export default function Home() {
               current_country={country_names[country]}
             />
           ),
-          errorElement: <Error_element />,
+          errorElement: <ErrorElement />,
         },
         {
           path: `search_query`,
@@ -99,7 +99,7 @@ export default function Home() {
               current_country={country_names[country]}
             />
           ),
-          errorElement: <Error_element />,
+          errorElement: <ErrorElement />,
         },
         ...news_category_list.map((val) => ({
           path: `${val}`,
@@ -117,12 +117,12 @@ export default function Home() {
               category={val}
             />
           ),
-          errorElement: <Error_element />,
+          errorElement: <ErrorElement />,
         })),
         {
           path: "about_me",
-          element: <About_me />,
-          errorElement: <Error_element />,
+          element: <AboutMe />,
+          errorElement: <ErrorElement />,
         },
       ],
     },

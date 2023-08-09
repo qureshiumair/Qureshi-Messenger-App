@@ -5,7 +5,6 @@ import app_logo from "../static/app_logo.png";
 import search_icon from "../static/search_icon.svg";
 import { theme_context as theme_context_ } from "./home";
 
-var curr_selected_news_cate = null;
 
 function search_result(props, navigate) {
   const search_bar = document.getElementById("input_search_query");
@@ -22,7 +21,7 @@ function search_result(props, navigate) {
 function update_startup_screen(props) {
   setTimeout(() => {
     props.startup_screen[1](false);
-  }, 1500);
+  }, 1600);
   return true;
 }
 
@@ -62,6 +61,8 @@ function set_new_theme(curr_theme, set_theme) {
   set_theme(JSON.parse(localStoragePreference));
 }
 
+
+var curr_selected_news_cate = null;
 export default function Navbar(props) {
   let theme_context = useContext(theme_context_);
   const navigate = useNavigate();

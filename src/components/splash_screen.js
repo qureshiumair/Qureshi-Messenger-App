@@ -8,7 +8,7 @@ export default function SplashScreen() {
   function set_width() {
     let ele = document.getElementById("progress_bar");
     let current_width = Number(ele.style.width.split("%")[0]);
-    if (current_width > 65) {
+    if (current_width > 85) {
       clearInterval(interval_id);
     }
     ele.style.width = String(current_width + 10) + "%";

@@ -100,11 +100,15 @@ export default function News(props) {
 }
 
 News.defaultProps = {
-  page_size: 8,
-  category: "business",
+  category: "business"
 };
 
 News.propTypes = {
-  objs: PropTypes.number,
+  news_heading: PropTypes.string,
+  search_query: PropTypes.string,
+  set_progress: PropTypes.func,
+  page_size: PropTypes.string,
+  api_key: PropTypes.string,
+  current_country:PropTypes.string,
   category: PropTypes.string,
 };
