@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { theme_context } from "./home";
 import default_article_img from '../static/default_article_img.jpg';
 
+
 export default function News_items(props) {
   let theme_context_ = useContext(theme_context);
   return (
@@ -57,10 +58,12 @@ export default function News_items(props) {
   );
 }
 
+
 News_items.defaultProps = {
   news_data: [],
   is_loading: true,
 };
+
 
 News_items.propTypes = {
   news_data: PropTypes.array,

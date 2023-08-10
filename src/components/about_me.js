@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function About_me() {
+export default function AboutMe() {
   const app_version = process.env.REACT_APP_NEWS_VERSION;
   return (
     <>

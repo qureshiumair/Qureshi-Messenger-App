@@ -1,12 +1,20 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import News from "./news";
+import News from "./news_body";
 import Navbar from "./navbar";
 import LoadingBar from "react-top-loading-bar";
 import { useState, createContext } from "react";
-import Error_element from "./error_element";
-import About_me from "./about_me";
+import ErrorElement from "./error_element";
+import AboutMe from "./about_me";
 
+
+
+/** 
+ * returns user prefer country to display news and to set user prefer country
+ * @param {string}     name             the name of the country
+ * @return {string}    curr_name        the name of the coutry
+ * @return {function}   set_country    the state function to set user prefer country 
+ * */
 function usePrefer_country(name) {
   let [curr_name, update_curr_name] = useState(
     localStorage.getItem("selected_country") == null
@@ -21,6 +29,11 @@ function usePrefer_country(name) {
   return [curr_name, set_country];
 }
 
+/**
+ * set and return app theme dark or light based on user preference
+ * @retrun {string} curr_theme users selected theme default will be light mode
+ */
+
 function get_curr_theme() {
   let curr_theme = { color: "black", backgroundColor: "white" };
   if (localStorage.getItem("curr_theme") == null) {
@@ -33,16 +46,18 @@ function get_curr_theme() {
   return curr_theme;
 }
 
+/**@param {object} theme_context made globally available user prefer theme(dark/light) */
 export const theme_context = createContext();
+
 export default function Home() {
   let [curr_theme, set_theme] = useState(get_curr_theme());
   const country_names = JSON.parse(process.env.REACT_APP_NEWS_COUNTRY_MAP);
   let [country, set_country] = usePrefer_country("India");
   let [progress, setProgress] = useState(0);
-  let [search_query, set_query] = useState("");
+  let [search_query, set_query] = useState();
   let [splash_screen, set_splash_screen] = useState(true);
   const api_key = process.env.REACT_APP_NEWS_API_KEY;
-  const homepage = process.env.REACT_APP_NEWS_HOMEPAGE;
+  const homepage_url = process.env.REACT_APP_NEWS_HOMEPAGE;
   const news_category_list = [
     "general",
     "business",
@@ -55,10 +70,10 @@ export default function Home() {
   const router = createBrowserRouter([
     {
       path: "/",
-      errorElement: <Error_element />,
+      errorElement: <ErrorElement />,
     },
     {
-      path: `${homepage}/`,
+      path: `${homepage_url}/`,
       element: (
         <Navbar
           key="navbar_in_home"
@@ -70,7 +85,7 @@ export default function Home() {
           news_category_list={news_category_list}
         />
       ),
-      errorElement: <Error_element />,
+      errorElement: <ErrorElement />,
       children: [
         {
           index: true,
@@ -84,7 +99,7 @@ export default function Home() {
               current_country={country_names[country]}
             />
           ),
-          errorElement: <Error_element />,
+          errorElement: <ErrorElement />,
         },
         {
           path: `search_query`,
@@ -99,7 +114,7 @@ export default function Home() {
               current_country={country_names[country]}
             />
           ),
-          errorElement: <Error_element />,
+          errorElement: <ErrorElement />,
         },
         ...news_category_list.map((val) => ({
           path: `${val}`,
@@ -117,12 +132,12 @@ export default function Home() {
               category={val}
             />
           ),
-          errorElement: <Error_element />,
+          errorElement: <ErrorElement />,
         })),
         {
           path: "about_me",
-          element: <About_me />,
-          errorElement: <Error_element />,
+          element: <AboutMe />,
+          errorElement: <ErrorElement />,
         },
       ],
     },

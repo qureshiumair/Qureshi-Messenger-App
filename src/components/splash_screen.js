@@ -5,10 +5,13 @@ export default function SplashScreen() {
   const interval_id = setInterval(() => {
     set_width();
   }, 100);
+  
+  /**enlarge the loading bar at the startup screen by 10 at each call
+  */
   function set_width() {
     let ele = document.getElementById("progress_bar");
     let current_width = Number(ele.style.width.split("%")[0]);
-    if (current_width > 65) {
+    if (current_width > 85) {
       clearInterval(interval_id);
     }
     ele.style.width = String(current_width + 10) + "%";

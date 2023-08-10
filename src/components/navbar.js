@@ -4,9 +4,14 @@ import SplashScreen from "./splash_screen";
 import app_logo from "../static/app_logo.png";
 import search_icon from "../static/search_icon.svg";
 import { theme_context as theme_context_ } from "./home";
+import PropTypes from "prop-types";
 
-var curr_selected_news_cate = null;
 
+
+/**navigate to the search result
+ * @param {function} props.set_query  state function to send search query to parent component
+ * @param {function} navigate       navigate to the input url
+ */
 function search_result(props, navigate) {
   const search_bar = document.getElementById("input_search_query");
   let search_string = search_bar.value.trim();
@@ -19,13 +24,22 @@ function search_result(props, navigate) {
   }
 }
 
+
+/**sets startup screen state variable to false
+ * @param {function} props.startup_screen state function of disable startup screen
+ * @return {boolean} true to show startup screen
+ */
 function update_startup_screen(props) {
   setTimeout(() => {
     props.startup_screen[1](false);
-  }, 1500);
+  }, 1600);
   return true;
 }
 
+
+/**highlight news cateogry whenever user click on it
+ * @param {object}  event when user clicked on any available news category
+*/
 function highlight_news_category(event) {
   if (!event) {
     let paths_list = window.location.pathname.split("/");
@@ -44,6 +58,11 @@ function highlight_news_category(event) {
   curr_selected_news_cate = event.target.id;
 }
 
+
+/**change app theme whenever user click on theme button 
+ * @param {string} curr_theme old selected theme
+ * @param {string} set_theme  state function to set new selected theme
+ */
 function set_new_theme(curr_theme, set_theme) {
   if (curr_theme.color === "black") {
     localStorage.setItem(
@@ -61,6 +80,11 @@ function set_new_theme(curr_theme, set_theme) {
   document.body.style.backgroundColor = localStoragePreference.backgroundColor;
   set_theme(JSON.parse(localStoragePreference));
 }
+
+
+/**@param {string} curr_selected_news_cate hold value of current selected news cateogry by the  user  */
+var curr_selected_news_cate = null;
+
 
 export default function Navbar(props) {
   let theme_context = useContext(theme_context_);
@@ -188,4 +212,14 @@ export default function Navbar(props) {
       )}
     </>
   );
+}
+
+
+Navbar.propTypes = {
+  current_country: PropTypes.string,
+  set_country: PropTypes.func,
+  country_name_map: PropTypes.func,
+  set_query: PropTypes.func,
+  startup_screen: PropTypes.array,
+  news_category_list:PropTypes.array
 }
