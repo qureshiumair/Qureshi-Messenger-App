@@ -1,9 +1,10 @@
 import { React, useEffect, useState, useContext } from "react";
 import News_items from "./news_items";
-import Spinner from "./spinner";
+import Spinner from "./loading_spinner";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { theme_context } from "./home";
+
 
 export default function News(props) {
   let curr_theme = useContext(theme_context);
