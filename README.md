@@ -5,4 +5,5 @@ Web application built for everyone. it comes with user friendly UI and easy to u
 Steps to run the app:<br/>
 1.pull this repo on your local machine.<br/>
 2.install the latest version of node.js.<br/>
-3.run the command "npm start".<br/>
+3.open the folder in IDE.<br/>
+4.run the command "npm start".<br/>
